@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "mocha": "^9.1.3"
+  },
+  "scripts": {
+    "test": "mocha -w ./src/test/*.test.js"
+  }
+}
