@@ -4,12 +4,12 @@ let notCloseSuggestNeedLess = ['Ух! Ты совсем не попал! Воз�
 let closeSuggestNeedMore = ['Совсем рядом! Поробуй выбрать число побольше', 'Ты близко! Возьми выше', 'Почти угадал, но попробуй большее число']
 let closeSuggestNeedLess = ['Совсем рядом! Поробуй выбрать число поменьше', 'Ты близко! Возьми ниже', 'Почти угадал, но попробуй меньшее число']
 
-let suggestNumberInput = document.querySelector('.input-attempt')
-let suggestButton = document.querySelector('.game-gameplay-button')
-let endButton = document.querySelector('.game-end-button')
-let gameResult = document.querySelector('.game-result')
-let gameResultText = document.querySelector('.game-result-text')
-let reloadButton = document.querySelector('.game-result-button')
+let suggestNumberInput = document.querySelector('.gameplay_input-attempt')
+let suggestButton = document.querySelector('.gameplay_button-try')
+let endButton = document.querySelector('.gameplay_button-end')
+let gameResult = document.querySelector('.result')
+let gameResultText = document.querySelector('.result_text')
+let reloadButton = document.querySelector('.result_button')
 let attempt = 1;
 
 endButton.onclick = function () {
@@ -22,51 +22,53 @@ reloadButton.onclick = function () {
 
 suggestButton.onclick = function () {
     let numberDifference = gameNumber - +suggestNumberInput.value
+    console.log(attempt)
+    console.log(gameNumber)
+    console.log(numberDifference)
     if (!suggestNumberInput.value) {
         textFill('Что ты сказал?', suggestButton)
+        return false;
+    }
+    if (numberDifference === 0) {
+        textFill('КВАУ! Ты угадал!!!!', suggestButton)
+        win(`Ты победил с ${attempt}-ой попытки`)
+        return true;
+    }
+    if(+suggestNumberInput.value > +maxNumberRange.value) {
+        attempt++
+        looseGameChecker('Твоё число больше оговоренного максимума')
+        return false;
+    }
+    if (+suggestNumberInput.value < +minNumberRange.value) {
+        attempt++
+        looseGameChecker('Твоё число меньше оговоренного максимума')
+        return false;
+    }
+    if (attempt < 2) {
+        attempt++
+        looseGameChecker('Не попал! В следующий раз я тебе подскажу')
     } else {
-        console.log(playerAttemptCounter)
-        if (attempt === playerAttemptCounter) {
-            textFill('Ты потратил все свои попытки', suggestButton)
-            loose('Неудача! Попробуй ещё раз')
-        } else {
-            if (attempt < 2) {
-                textFill('Не попал! В следующий раз я тебе подскажу',suggestButton)
-                attempt++
-            } else {
-                if (numberDifference === 0) {
-                    textFill('КВАУ! Ты угадал!!!!', suggestButton)
-                    win(`Ты победил с ${attempt}-ой попытки`)
-                    return
-                }
-                if(+suggestNumberInput.value > +maxNumberRange.value) {
-                    textFill('Твоё число больше оговоренного максимума', suggestButton)
-                    attempt++
-                } else if (+suggestNumberInput.value < +minNumberRange.value) {
-                    textFill('Твоё число меньше оговоренного максимума', suggestButton)
-                    attempt++
-                } else if (numberDifference > 40) {
-                    textFill('Ты ужасно далеко! Возьми больше',suggestButton)
-                    attempt++
-                } else if (numberDifference < -40) {
-                    textFill('Ты ужасно далеко! Возьми меньше',suggestButton)
-                    attempt++
-                } else if (numberDifference >= 15 && numberDifference < 40) {
-                    textFill(notCloseSuggestNeedMore[randomText()], suggestButton)
-                    attempt++
-                } else if (numberDifference >= 1 && numberDifference < 15) {
-                    textFill(closeSuggestNeedMore[randomText()], suggestButton)
-                    attempt++
-                } else if (numberDifference > -40 && numberDifference < -15) {
-                    textFill(notCloseSuggestNeedLess[randomText()],suggestButton)
-                    attempt++
-                } else if (numberDifference > -15 && numberDifference <= -1) {
-                    textFill(closeSuggestNeedLess[randomText()],suggestButton)
-                    attempt++
-                }
-            }
+        if (numberDifference > 40) {
+            attempt++
+            looseGameChecker('Ты ужасно далеко! Возьми больше')
+        } else if (numberDifference < -40) {
+            attempt++
+            looseGameChecker('Ты ужасно далеко! Возьми меньше')
+        } else if (numberDifference >= 15 && numberDifference < 40) {
+            attempt++
+            looseGameChecker(notCloseSuggestNeedMore[randomText()])
+        } else if (numberDifference >= 1 && numberDifference < 15) {
+            attempt++
+            looseGameChecker(closeSuggestNeedMore[randomText()])
+        } else if (numberDifference > -40 && numberDifference < -15) {
+            attempt++
+            looseGameChecker(notCloseSuggestNeedLess[randomText()])
+        } else if (numberDifference > -15 && numberDifference <= -1) {
+            attempt++
+            looseGameChecker(closeSuggestNeedLess[randomText()])
         }
     }
+
 }
 
 function randomText() {
@@ -78,6 +80,17 @@ function win(message) {
     gameResultText.innerHTML = message;
     gameGameplay.classList.add('disabled')
     gameResult.classList.remove('disabled')
+}
+
+function looseGameChecker(message) {
+    if (attempt === playerAttemptCounter + 1) {
+        textFill('Ты потратил все свои попытки', suggestButton)
+        loose('Неудача! Попробуешь ещё?')
+        return true
+    } else {
+        textFill(message,suggestButton)
+    }
+
 }
 
 function loose(message) {
