@@ -96,6 +96,14 @@ body, html, main, section {
     &[disabled] {
       border-color: #4a4d4a;
     }
+
+    &:focus {
+      border-color: #ffea00;
+    }
+  }
+
+  .control_input-max {
+    border: 4px solid #c9af23;
   }
 }
 
