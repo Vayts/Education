@@ -4,12 +4,12 @@ let notCloseSuggestNeedLess = ['Ух! Ты совсем не попал! Воз�
 let closeSuggestNeedMore = ['Совсем рядом! Поробуй выбрать число побольше', 'Ты близко! Возьми выше', 'Почти угадал, но попробуй большее число']
 let closeSuggestNeedLess = ['Совсем рядом! Поробуй выбрать число поменьше', 'Ты близко! Возьми ниже', 'Почти угадал, но попробуй меньшее число']
 
-let suggestNumberInput = document.querySelector('.gameplay_input-attempt')
-let suggestButton = document.querySelector('.gameplay_button-try')
-let endButton = document.querySelector('.gameplay_button-end')
-let gameResult = document.querySelector('.result')
-let gameResultText = document.querySelector('.result_text')
-let reloadButton = document.querySelector('.result_button')
+let suggestNumberInput = document.querySelector('.input-attempt')
+let suggestButton = document.querySelector('.game-gameplay-button')
+let endButton = document.querySelector('.game-end-button')
+let gameResult = document.querySelector('.game-result')
+let gameResultText = document.querySelector('.game-result-text')
+let reloadButton = document.querySelector('.game-result-button')
 let attempt = 1;
 
 endButton.onclick = function () {
