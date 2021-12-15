@@ -22,9 +22,6 @@ reloadButton.onclick = function () {
 
 suggestButton.onclick = function () {
     let numberDifference = gameNumber - +suggestNumberInput.value
-    console.log(attempt)
-    console.log(gameNumber)
-    console.log(numberDifference)
     if (!suggestNumberInput.value) {
         textFill('Что ты сказал?', suggestButton)
         return false;
