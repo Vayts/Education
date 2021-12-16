@@ -12,37 +12,39 @@
             <div class="container">
                 <div class="randomizer-wrapper">
                     <div class="randomizer">
-                        <div class="logo-wrapper">
-                            <div class="gif-holder">
-                                <img class="logo-gif left" src="img/frog-left.gif" alt="logo-frog">
+                        <div class="logo">
+                            <div class="logo_gif-holder">
+                                <img class="logo_gif left" src="img/frog-left.gif" alt="logo-frog">
                             </div>
-                            <h1 class="logo-title">FROG RANDOM</h1>
-                            <div class="gif-holder">
-                                <img class="logo-gif" src="img/frog-right.gif" alt="logo-frog">
+                            <h1 class="logo_title">FROG RANDOM</h1>
+                            <div class="logo_gif-holder">
+                                <img class="logo_gif" src="img/frog-right.gif" alt="logo-frog">
                             </div>
                         </div>
-                        <div class="randomizer-control">
-                            <div class="randomizer-min">
+                        <div class="control">
+                            <div class="control_min-number">
                                 <label>
-                                    <span>MIN</span>
-                                    <input type="number" value="1" class="min-input">
+                                    <span class="control_title">MIN</span>
+                                    <input type="number" value="1" class="control_input control_input-min">
                                 </label>
                             </div>
-                            <div class="result-button-wrapper">
-                                <button class="button result-button">Generate</button>
+                            <div class="control-button-result">
+                                <button class="control_button button">Generate</button>
                             </div>
-                            <div class="randomizer-max">
+                            <div class="control_max-number">
                                 <label>
-                                    <span>MAX</span>
-                                    <input type="number" value="100" class="max-input">
+                                    <span class="control_title">MAX</span>
+                                    <input type="number" value="100" class="control_input control_input-max">
                                 </label>
                             </div>
                         </div>
-                        <div class="randomizer-result">
-                            <p class="randomizer-result-text">1</p>
-                        </div>
-                        <div class="reset-button-wrapper">
-                            <button class="button reset-button" disabled="disabled">Reset</button>
+                        <div class="result">
+                            <div class="result_holder">
+                                <p class="result_text"></p>
+                            </div>
+                            <div class="result_reset-holder">
+                                <button class="result_reset-button button" disabled="disabled">Reset</button>
+                            </div>
                         </div>
                     </div>
                 </div>

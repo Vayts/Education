@@ -26,4 +26,3 @@ function goToSettingStage() {
     gameStart.classList.add('active')
 }
 
-

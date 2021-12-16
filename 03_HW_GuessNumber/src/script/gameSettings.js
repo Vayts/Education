@@ -1,12 +1,12 @@
-const startButton = document.querySelector('.button-start')
-const exitButton = document.querySelector('.button-exit')
-let gameSettings = document.querySelector('.game-settings')
-let gameGameplay = document.querySelector('.game-gameplay')
+const startButton = document.querySelector('.start_button-yes')
+const exitButton = document.querySelector('.start_button-no')
+let gameSettings = document.querySelector('.settings')
+let gameGameplay = document.querySelector('.gameplay')
 
-let settingsButton = document.querySelector('.settings-button')
-let maxNumberRange = document.querySelector('.input-max-range')
-let minNumberRange = document.querySelector('.input-min-range')
-let gameAttempts = document.querySelector('.input-attempts')
+let settingsButton = document.querySelector('.settings_button')
+let maxNumberRange = document.querySelector('.settings_input-max')
+let minNumberRange = document.querySelector('.settings_input-min')
+let gameAttempts = document.querySelector('.settings_input-attempt')
 
 let gameNumber;
 let playerAttemptCounter;

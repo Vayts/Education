@@ -1,8 +1,8 @@
-let resultButton = document.querySelector('.result-button')
-let resetButton = document.querySelector('.reset-button')
-let minInput = document.querySelector('.min-input')
-let maxInput = document.querySelector('.max-input')
-let resultText = document.querySelector('.randomizer-result-text')
+let resultButton = document.querySelector('.control_button')
+let resetButton = document.querySelector('.result_reset-button')
+let minInput = document.querySelector('.control_input-min')
+let maxInput = document.querySelector('.control_input-max')
+let resultText = document.querySelector('.result_text')
 
 let arr = []
 

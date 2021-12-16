@@ -9,68 +9,65 @@
 <body>
     <main>
         <div class="container">
-            <section id="game">
-                <div class="game-title">
-                    <h1>FROG RANDOM</h1>
-                </div>
-                <div class="game-wrapper">
-                    <div class="dialog-wrapper">
-                        <div class="game-host">
+            <section id="game-section">
+                <div class="game">
+                    <div class="dialog">
+                        <div class="dialog_game-host">
                             <img src="img/frog.png" alt="funny frog - game host">
                         </div>
-                        <div class="host-dialog-window">
-                            <p class="dialog-text">Привет!</p>
-                            <button class="dialog-button"></button>
+                        <div class="dialog_dialog-box">
+                            <p class="dialog_dialog-text">Привет!</p>
+                            <button class="dialog_button"></button>
                         </div>
                     </div>
-                    <div class="game-start">
-                        <button class="game-start-button button-start">Да</button>
-                        <button class="game-start-button button-exit">Нет</button>
-                    </div>
-                    <div class="game-rules">
-                        <h4>Правила игры!</h4>
-                        <ul>
-                            <li>Только целое число от 1 до 200!</li>
-                            <li>Диапазон чисел ты выбираешь сам!</li>
-                            <li>Максимум у тебя будет 15 попыток!</li>
+                    <div class="rules">
+                        <h4 class="rules_title">Правила игры!</h4>
+                        <ul class="rules_list">
+                            <li class="rules_list-item">Только целое число от 1 до 200!</li>
+                            <li class="rules_list-item">Диапазон чисел ты выбираешь сам!</li>
+                            <li class="rules_list-item">Максимум у тебя будет 15 попыток!</li>
                         </ul>
                     </div>
-                    <div class="game-settings disabled">
-                        <form>
-                            <div class="game-number-range">
+                    <div class="start">
+                        <button class="start_button start_button-yes button">Да</button>
+                        <button class="start_button start_button-no button">Нет</button>
+                    </div>
+                    <div class="settings disabled">
+                        <form class="settings_form">
+                            <div class="settings_number-content">
                                 <label>
                                     Я загадаю число от
-                                    <input min="1" max="199" type="number" class="settings-input input-min-range" value="1">
+                                    <input min="1" max="199" type="number" class="game_input settings_input settings_input-min" value="1">
                                 </label>
                                 <label>
                                     до
-                                    <input min="2" max="200" type="number" class="settings-input input-max-range" value="200">
+                                    <input min="2" max="200" type="number" class="game_input settings_input settings_input-max" value="200">
                                 </label>
                             </div>
-                            <div class="game-attempts">
+                            <div class="settings_attempts-content">
                                 <label>
                                     У тебя будет
-                                    <input min="1" max="15" type="number" class="settings-input input-attempts" value="7">
+                                    <input min="1" max="15" type="number" class="game_input settings_input settings_input-attempt" value="7">
                                     попыок
                                 </label>
                             </div>
-                            <button type="button" class="settings-button" disabled>Начать</button>
+                            <button type="button" class="settings_button button" disabled>Начать</button>
                         </form>
                     </div>
-                    <div class="game-gameplay disabled">
-                        <form class="form-attempt">
+                    <div class="gameplay disabled">
+                        <form class="gameplay_guess-form">
                             <label>
-                                <input type="number" class="input-attempt" value="1">
+                                <input type="number" class="game_input gameplay_input-attempt" value="1">
                             </label>
-                            <div class="form-buttons">
-                                <button class="game-gameplay-button" type="button">Попробовать</button>
-                                <button type="button" class="game-end-button">Закончить</button>
+                            <div class="gameplay_form-buttons">
+                                <button class="gameplay_button gameplay_button-try button" type="button">Попробовать</button>
+                                <button class="gameplay_button gameplay_button-end button" type="button">Закончить</button>
                             </div>
                         </form>
                     </div>
-                    <div class="game-result disabled">
-                        <h4 class="game-result-text"></h4>
-                        <button type="button" class="game-result-button">Снова</button>
+                    <div class="result disabled">
+                        <p class="result_text"></p>
+                        <button type="button" class="result_button button">Снова</button>
                     </div>
                 </div>
             </section>
