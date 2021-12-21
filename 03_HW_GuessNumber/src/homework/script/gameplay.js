@@ -1,9 +1,3 @@
-let notCloseSuggestNeedMore = ['Ух! Тут совсем холодно. Может возьмешь больше?', 'Вообще не попал! Попробуй число побольше', 'Даже не близко! Бери выше!']
-let notCloseSuggestNeedLess = ['Ух! Ты совсем не попал! Возьми меньше', 'Вообще не попал! Попробуй число поменьше', 'Даже не близко! Бери ниже!']
-
-let closeSuggestNeedMore = ['Совсем рядом! Поробуй выбрать число побольше', 'Ты близко! Возьми выше', 'Почти угадал, но попробуй большее число']
-let closeSuggestNeedLess = ['Совсем рядом! Поробуй выбрать число поменьше', 'Ты близко! Возьми ниже', 'Почти угадал, но попробуй меньшее число']
-
 let suggestNumberInput = document.querySelector('.gameplay_input-attempt')
 let suggestButton = document.querySelector('.gameplay_button-try')
 let endButton = document.querySelector('.gameplay_button-end')
@@ -22,57 +16,60 @@ reloadButton.onclick = function () {
 
 suggestButton.onclick = function () {
     let numberDifference = gameNumber - +suggestNumberInput.value
-    console.log(attempt)
-    console.log(gameNumber)
-    console.log(numberDifference)
+    checkNumberMatch(numberDifference)
+}
+
+function checkNumberMatch (numberDifference) {
     if (!suggestNumberInput.value) {
         textFill('Что ты сказал?', suggestButton)
-        return false;
+        return 'Что ты сказал?';
     }
     if (numberDifference === 0) {
         textFill('КВАУ! Ты угадал!!!!', suggestButton)
         win(`Ты победил с ${attempt}-ой попытки`)
-        return true;
+        return `Ты победил с 0-ой попытки`;
     }
     if(+suggestNumberInput.value > +maxNumberRange.value) {
         attempt++
         looseGameChecker('Твоё число больше оговоренного максимума')
-        return false;
+        return 'Твоё число больше оговоренного максимума';
     }
     if (+suggestNumberInput.value < +minNumberRange.value) {
         attempt++
         looseGameChecker('Твоё число меньше оговоренного максимума')
-        return false;
+        return 'Твоё число меньше оговоренного максимума';
     }
     if (attempt < 2) {
         attempt++
         looseGameChecker('Не попал! В следующий раз я тебе подскажу')
+        return 'Не попал! В следующий раз я тебе подскажу'
     } else {
         if (numberDifference > 40) {
             attempt++
             looseGameChecker('Ты ужасно далеко! Возьми больше')
+            return 'Ты ужасно далеко! Возьми больше'
         } else if (numberDifference < -40) {
             attempt++
             looseGameChecker('Ты ужасно далеко! Возьми меньше')
+            return 'Ты ужасно далеко! Возьми меньше'
         } else if (numberDifference >= 15 && numberDifference < 40) {
             attempt++
-            looseGameChecker(notCloseSuggestNeedMore[randomText()])
+            looseGameChecker('Ух! Тут совсем холодно. Может возьмешь больше?')
+            return 'Ух! Тут совсем холодно. Может возьмешь больше?'
         } else if (numberDifference >= 1 && numberDifference < 15) {
             attempt++
-            looseGameChecker(closeSuggestNeedMore[randomText()])
+            looseGameChecker('Совсем рядом! Попробуй выбрать число побольше')
+            return 'Совсем рядом! Попробуй выбрать число побольше'
         } else if (numberDifference > -40 && numberDifference < -15) {
             attempt++
-            looseGameChecker(notCloseSuggestNeedLess[randomText()])
+            looseGameChecker('Ух! Ты совсем не попал! Возьми меньше')
+            return 'Ух! Ты совсем не попал! Возьми меньше'
         } else if (numberDifference > -15 && numberDifference <= -1) {
             attempt++
-            looseGameChecker(closeSuggestNeedLess[randomText()])
+            looseGameChecker('Совсем рядом! Попробуй выбрать число поменьше')
+            return 'Совсем рядом! Попробуй выбрать число поменьше'
         }
     }
-
-}
-
-function randomText() {
-    return Math.floor(Math.random() * (2 + 1))
 }
 
 function win(message) {
@@ -98,4 +95,8 @@ function loose(message) {
     gameResultText.textContent = message;
     gameGameplay.classList.add('disabled')
     gameResult.classList.remove('disabled')
+}
+
+function sum(a,b) {
+    return a + b
 }

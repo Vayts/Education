@@ -14,5 +14,3 @@ function textFill(message, disableButton) {
         }
     },25)
 }
-
-console.log('a')
