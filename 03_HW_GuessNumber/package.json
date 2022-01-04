@@ -4,17 +4,17 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@types/jest": "^27.0.3",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-sass": "^5.0.0",
-    "mocha": "^9.1.3",
+    "jest": "^27.4.5",
     "sass": "^1.45.0"
   },
   "scripts": {
     "cmd": "node_modules/.bin/gulp",
     "build": "yarn cmd default",
-    "watch": "yarn cmd watch",
-    "test": "mocha -w ./src/test/*.test.js"
+    "watch": "yarn cmd watch"
   },
   "devDependencies": {
     "@types/gulp": "^4.0.9"
