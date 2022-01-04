@@ -1,335 +1,260 @@
-$mainColor: #718c63;
-$subColor: #febd00;
+$main-color: #739875;
+$sub-color: #FFD700;
+$font: "Press Start 2P", cursive;
 
-$submitButton: #718c63;
-$submitButtonHover: #90d06d;
-
-$rejectButton: #c53144;
-$rejectButtonHover: #f1253d;
-
-@mixin mainButton {
-  min-width: 205px;
-  border: none;
-  outline: none;
-  user-select: none;
-  padding: 20px;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 15px;
+@mixin button {
+  padding: 10px 30px;
+  background-color: $main-color;
+  color: $sub-color;
+  border: 2px solid $main-color;
+  font-size: 1.3rem;
+  font-family: $font;
   transition: all 0.3s;
   cursor: pointer;
-  background-color: $submitButton;
-  border-radius: 5px;
-  margin-bottom: 20px;
+
   &:hover {
-    background-color: #638c49;
+    background-color: #ffffff;
+    color: $main-color;
+  }
+}
+
+@mixin section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+
+  &.disabled {
+    display: none;
   }
 
 }
 
-html, main {
-  height: 100%;
+html {
+  font-family: "Press Start 2P", cursive;
+  font-size: 14px;
 }
+
 body {
   margin: 0;
-  height: 100%;
-  position: relative;
-  background-color: #f9f9fd;
-  font-family: 'Press Start 2P', cursive;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-label {
-  display: flex;
-}
-
-
-section {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  background-color: #faffff;
 }
 
 .container {
-  max-width: 1000px;
+  width: 1200px;
   margin: 0 auto;
-  padding: 10px;
-  height: 100%;
-}
-
-.disabled {
-  display: none !important;
-}
-
-.button {
-  &:hover {
-    box-shadow: 0px 3px 54px 5px rgba(0, 0, 0, 0.35);
-  }
-
-  &[disabled] {
-    background-color: #42463f !important;
-  }
-
-  &[disabled]:hover {
-    background-color: #42463f;
-  }
-
-}
-
-.game {
-  position: relative;
-  width: 750px;
-  height: 300px;
-  background-color: #ffffff;
-  box-shadow: -9px 39px 46px -12px rgba(34, 60, 80, 0.2);
-  border-radius: 20px;
-  padding: 50px;
-
-}
-
-.dialog {
+  height: 100vh;
   display: flex;
+  justify-content: center;
   align-items: center;
-  height: 191px;
+}
+
+.content {
+  width: 800px;
+  background-color: #ffffff;
+  height: 350px;
+  box-shadow: 4px 4px 38px 0 rgba(34, 60, 80, 0.2);
+  border-radius: 30px;
+  position: relative;
+  padding: 20px;
+}
+
+.game-host {
   position: absolute;
   bottom: 100%;
+  display: flex;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
 
-  .dialog_dialog-box{
-    padding: 10px;
-    margin: 0 20px;
-    min-height: 150px;
-    width: 500px;
-    background-color: $mainColor;
-    box-shadow: -9px 39px 16px -6px rgba(34, 60, 80, 0.2);
+  &__dialog-window {
+    width: 450px;
+    height: 120px;
+    margin-left: 40px;
+    background-color: $main-color;
+    padding: 20px;
     border-radius: 20px;
     position: relative;
-    font-size: 14px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    color: $sub-color;
+    letter-spacing: 2px;
 
     &:before {
       content: '';
-      position: absolute;
       width: 0;
       height: 0;
-      right: 99%;
-      bottom: 50%;
       border-style: solid;
-      border-width: 20px 20px 20px 0;
-      border-color: transparent $mainColor transparent transparent;
+      border-width: 20px 30px 20px 0;
+      border-color: transparent $main-color transparent transparent;
+      position: absolute;
+      right: 100%;
+      top:50%;
+      transform: translateY(-50%);
     }
   }
 
-  .dialog_dialog-text {
-    color: $subColor;
-    line-height: 1.5;
-    align-items: center;
-    width: 100%;
+  &__dialog-text {
+    text-align: center;
+    line-height: 1.3;
+  }
+}
+
+.game-rules {
+  @include section;
+
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+  }
+
+  &__button {
+    @include button;
+    position: absolute;
+    bottom: 10%;
+
+  }
+}
+
+.rules-list {
+  list-style: none;
+  margin-bottom: 30px;
+
+  &__item {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
     text-align: center;
   }
-
-  .dialog_button {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 15px 0 15px 25px;
-    border-color: transparent transparent transparent $subColor;
-    transition: all 0.3s;
-    cursor: pointer;
-    outline: none;
-    background-color: transparent;
-
-    &:hover {
-      border-color: transparent transparent transparent #bea611;
-    }
-
-  }
 }
 
-.rules {
-  font-size: 18px;
-  line-height: 1.2;
-  text-align: center;
-
-
-  .rules_list-item{
-    list-style: none;
-    margin-bottom: 10px;
-  }
-}
-
-.start {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  pointer-events: none;
-  opacity: 0;
-  transition: all 1s;
-
-  &.active {
-    opacity: 1;
-  }
-
-  .start_button {
-    background-color: transparent;
-    border: none;
-    outline: none;
-    user-select: none;
-    padding: 10px;
-    min-width: 100px;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 25px;
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-
-  &.active .start_button {
-    pointer-events: all;
-  }
-
-  .start_button-yes {
-    background-color: $submitButton;
-  }
-
-  .start_button-yes:hover {
-    background-color: $submitButtonHover;
-  }
-
-  .start_button-no {
-    background-color: $rejectButton;
-    &:hover {
-      background-color: $rejectButtonHover;
-    }
-  }
-}
-
-.settings {
-  font-size: 12px;
-  font-weight: 700;
-  width: 100%;
-  align-items: center;
+.game-settings {
   height: 100%;
 
-  .settings_form {
+  &.disabled {
+    display: none;
+  }
+
+  &__form {
     height: 100%;
-    width: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
   }
 
-  .settings_number-content {
-    display: flex;
+  &__label {
+    font-size: 1.2rem;
 
   }
 
-  .settings_input {
-    margin: 0 10px;
-    width: 70px;
+  &__range {
+    margin-bottom: 30px;
+  }
+
+  &__attempt {
+    margin-bottom: 90px;
+
+
+  }
+
+  &__input {
     border: none;
-    outline: none;
-    font-family: 'Press Start 2P', cursive;
-    color: $mainColor;
-    font-size: 16px;
-    border-bottom: solid 3px black;
+    border-bottom: 2px solid $main-color;
     text-align: center;
-    line-height: 1.1;
+    font-size: 1.8rem;
+    font-weight: 700;
+    outline-color: $sub-color;
+    font-family: $font;
+    color: $sub-color;
+
+    &_orange {
+      color: #ceac40;
+    }
+
   }
 
-  & .settings_input-max {
-    border-color: #9f9797;
+  &__button {
+    @include button;
+    position: absolute;
+    bottom: 10%;
   }
-
-  .settings_button {
-    padding: 20px 40px;
-    background-color: $submitButton;
-    border: none;
-    font-family: 'Press Start 2P', cursive;
-    cursor: pointer;
-    font-size: 18px;
-    transition: all 0.3s;
-  }
-
-  .settings-button:hover {
-    background-color: $submitButtonHover;
-  }
-
 }
 
-.gameplay {
-  .gameplay_guess-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
+.game-try {
+  @include section;
+
+  &.disabled {
+    display: none;
   }
 
-  .gameplay_input-attempt {
-    width: 200px;
+  &__title {
+    margin-top: -40px;
+    margin-bottom: 80px;
+    color: $main-color;
+    font-size: 2rem;
+  }
+
+  &__input {
     border: none;
+    border-bottom: 2px solid $main-color;
+    font-size: 3rem;
     outline: none;
-    font-family: 'Press Start 2P', cursive;
-    color: $mainColor;
-    font-size: 36px;
-    border-bottom: solid 3px #9f9797;
     text-align: center;
-    line-height: 1.1;
-    margin-bottom: 30px;
-
+    width: 180px;
+    font-family: $font;
+    color: $sub-color;
   }
 
-  .gameplay_form-buttons {
-    display: flex;
-    flex-direction: column;
+  &__button {
+    @include button;
+    position: absolute;
+    bottom: 10%;
   }
+}
 
-  .gameplay_button {
-    @include mainButton;
+.game-end {
+  @include section;
+
+  &__button {
+    @include button;
+    position: absolute;
+    bottom: 10%;
   }
+}
 
-  .gameplay_button-end {
-    background-color: $rejectButton;
+.close-button-wrapper {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 5%;
+  right: 5%;
+  cursor: pointer;
 
-    &:hover {
-      background-color: $rejectButtonHover;
+  &:hover {
+    &:before, &:after {
+      background-color: #000000;
     }
   }
 
-}
 
-.result {
-  color: $subColor;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-
-  .result_button {
-    @include mainButton;
+  &:before, &:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #7e7d7d;
   }
 
-  .result_text {
-    margin-bottom: 50px;
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
   }
 }
-
-.game_input {
-  transition: all 0.2s;
-}
-
-main input.game_input:focus {
-  border-color: $subColor;
-}
-
-
-
-
-
-

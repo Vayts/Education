@@ -8,74 +8,62 @@
 </head>
 <body>
     <main>
-        <div class="container">
-            <section id="game-section">
-                <div class="game">
-                    <div class="dialog">
-                        <div class="dialog_game-host">
-                            <img src="img/frog.png" alt="funny frog - game host">
-                        </div>
-                        <div class="dialog_dialog-box">
-                            <p class="dialog_dialog-text">Привет!</p>
-                            <button class="dialog_button"></button>
-                        </div>
+        <section class="container">
+            <div class="content">
+                <div class="game-host">
+                    <div class="game-host__img">
+                        <img src="img/frog.png" alt="">
                     </div>
-                    <div class="rules">
-                        <h4 class="rules_title">Правила игры!</h4>
-                        <ul class="rules_list">
-                            <li class="rules_list-item">Только целое число от 1 до 200!</li>
-                            <li class="rules_list-item">Диапазон чисел ты выбираешь сам!</li>
-                            <li class="rules_list-item">Максимум у тебя будет 15 попыток!</li>
-                        </ul>
-                    </div>
-                    <div class="start">
-                        <button class="start_button start_button-yes button">Да</button>
-                        <button class="start_button start_button-no button">Нет</button>
-                    </div>
-                    <div class="settings disabled">
-                        <form class="settings_form">
-                            <div class="settings_number-content">
-                                <label>
-                                    Я загадаю число от
-                                    <input min="1" max="199" type="number" class="game_input settings_input settings_input-min" value="1">
-                                </label>
-                                <label>
-                                    до
-                                    <input min="2" max="200" type="number" class="game_input settings_input settings_input-max" value="200">
-                                </label>
-                            </div>
-                            <div class="settings_attempts-content">
-                                <label>
-                                    У тебя будет
-                                    <input min="1" max="15" type="number" class="game_input settings_input settings_input-attempt" value="7">
-                                    попыок
-                                </label>
-                            </div>
-                            <button type="button" class="settings_button button" disabled>Начать</button>
-                        </form>
-                    </div>
-                    <div class="gameplay disabled">
-                        <form class="gameplay_guess-form">
-                            <label>
-                                <input type="number" class="game_input gameplay_input-attempt" value="1">
-                            </label>
-                            <div class="gameplay_form-buttons">
-                                <button class="gameplay_button gameplay_button-try button" type="button">Попробовать</button>
-                                <button class="gameplay_button gameplay_button-end button" type="button">Закончить</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="result disabled">
-                        <p class="result_text"></p>
-                        <button type="button" class="result_button button">Снова</button>
+                    <div class="game-host__dialog-window">
+                        <p id="dialog-text" class="game-host__dialog-text">Привет!</p>
                     </div>
                 </div>
-            </section>
-        </div>
+                <div class="game-rules" id="rules">
+                    <h4 class="game-rules__title">Правила</h4>
+                    <ul class="rules-list">
+                        <li class="rules-list__item">Диапазон чисел ты выбираешь сам</li>
+                        <li class="rules-list__item">Минимум: 0, а максимум: 200</li>
+                        <li class="rules-list__item">Попыток должно быть меньше, чем чисел в диапазоне</li>
+                        <li class="rules-list__item">Не больше 15 попыток</li>
+                    </ul>
+                    <button class="game-rules__button" id="game-rules-button"  type="button">Начать</button>
+                </div>
+                <div class="game-settings disabled" id="settings">
+                    <form class="game-settings__form">
+                        <div class="game-settings__range">
+                            <label class="game-settings__label">
+                                Я загадаю число от
+                                <input class="game-settings__input" min="1" max="199" type="number" id="min-input" value="1">
+                            </label>
+                            <label class="game-settings__label">
+                                до
+                                <input class="game-settings__input game-settings__input_orange" id="max-input"  min="2" max="200" type="number"  value="200">
+                            </label>
+                        </div>
+                        <div class="game-settings__attempt">
+                            <label class="game-settings__label">
+                                У тебя будет
+                                <input class="game-settings__input" id="attempt-input" min="1" max="15" type="number" value="7">
+                                попыток
+                            </label>
+                        </div>
+                        <button id="game-start-button" class="game-settings__button" type="button">Испытать удачу</button>
+                    </form>
+                </div>
+                <div class="game-try disabled" id="gameplay">
+                    <h4 class="game-try__title">Твоё число:</h4>
+                    <label><input id="try-input" class="game-try__input" type="number"></label>
+                    <button id="game-try-button" class="game-try__button">Попробовать</button>
+                </div>
+                <div class="game-end disabled" id="end">
+                    <p class="game-end__text" id="game-end-text"></p>
+                    <button class="game-end__button" id="game-end-button">Снова</button>
+                </div>
+                <div class="close-button-wrapper" id="game-close-button"></div>
+            </div>
+        </section>
     </main>
-    <script src="script/basic.js"></script>
-    <script src="script/gameStart.js"></script>
-    <script src="script/gameSettings.js"></script>
-    <script src="script/gameplay.js"></script>
+    <script src="script/logic.js"></script>
+    <script src="script/script.js"></script>
 </body>
 </html>
