@@ -1,6 +1,6 @@
 let assert = require('assert')
 
-const {getCookingTime, getNumber, findTitle, countCharacters, getNextPalindrome} = require("../homework/script")
+const {getCookingTime, getNumber, findTitle, countCharacters, getNextPalindrome} = require("../src/homework/script")
 
 describe('getCookingTime', ()=> {
     it ('should return error', () => {

@@ -10,6 +10,12 @@ describe('getSum', () => {
     test('"111", "111"', () => {
         expect(getSum('111', '111')).toEqual('222')
     })
+    test('"111", "1111"', () => {
+        expect(getSum('111', '1111')).toEqual('1222')
+    })
+    test('"999", "999"', () => {
+        expect(getSum('999', '999')).toEqual('1998')
+    })
     test('"0", "0"', () => {
         expect(getSum('0', '0')).toEqual('0')
     })
