@@ -87,7 +87,6 @@ function startGame(state) {
     toggleDisabledClass('settings','gameplay')
     setTextValue('dialog-text','Проверим твою удачу!');
     state.gameNumber = randomNumber(state.rangeMin, state.rangeMax)
-    console.log(state.gameNumber)
 }
 
 function guess(state) {
@@ -108,7 +107,6 @@ function guess(state) {
     }
     state.userAttempt++
     if (state.userAttempt === state.gameAttempt) {
-        console.log('JOPA')
         setTextValue('dialog-text','Ты проиграл')
         setTextValue( 'game-end-text',`Ты проиграл=(`)
         toggleDisabledClass('end', 'gameplay')
