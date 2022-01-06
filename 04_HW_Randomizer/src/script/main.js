@@ -1,4 +1,4 @@
-const {removeDisabled, disabledCheck, setInputValue, getInputValue, setDisabled, addListener} = require("../../../dist/script/utils");
+const {removeDisabled, disabledCheck, setInputValue, getInputValue, setDisabled, addListener, setTextValue} = require("../../dist/script/utils");
 
 document.addEventListener('DOMContentLoaded', function(){
     initApp();
@@ -8,7 +8,7 @@ function initApp() {
     const state = {
         rangeMin: 0,
         rangeMax: 100,
-        arr: [],
+        arr: undefined,
     }
 
     addListener('generate-button', 'click', generate.bind(null, state))
@@ -17,17 +17,16 @@ function initApp() {
 
 function generate(state) {
     if (!disabledCheck('min-input')) {
-        errorCheck(state)
+        const min = Number(getInputValue('min-input'))
+        const max = Number(getInputValue('max-input'))
+        errorCheck(state, min, max)
         removeDisabled('reset-button')
     } else {
         returnRandomNumber(state)
     }
 }
 
-function errorCheck(state) {
-
-    const min = Number(getInputValue('min-input'))
-    const max = Number(getInputValue('max-input'))
+function errorCheck(state, min, max) {
 
     if (min > 1000000 || max > 1000000) {
         setTextValue('result-text','Numbers > 1 mil.')
@@ -39,8 +38,8 @@ function errorCheck(state) {
         setTextValue('result-text','Only integers')
         return false
     } else {
-        state.rangeMin = getInputValue('min-input')
-        state.rangeMax = getInputValue('max-input')
+        state.rangeMin = min
+        state.rangeMax = max
         setDisabled('min-input');
         setDisabled('max-input');
         createArr(state);
@@ -49,22 +48,12 @@ function errorCheck(state) {
     }
 }
 
-function setTextValue(id, text) {
-    const node = document.getElementById(id)
-
-    if (node) {
-        node.innerText = text;
-        return true;
-    }
-    return false;
-}
-
 function createArr(state) {
     state.arr = []
-
     for (let i = state.rangeMin; i <= state.rangeMax; i++) {
         state.arr.push(i)
     }
+    return state
 }
 
 function resetApp(state) {
@@ -101,3 +90,5 @@ function returnRandomNumber(state) {
 function random(min,max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+module.exports = {errorCheck, returnRandomNumber, resetApp, createArr}

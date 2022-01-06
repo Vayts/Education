@@ -50,4 +50,14 @@ function removeDisabled(id) {
     return  false;
 }
 
-module.exports = {removeDisabled, disabledCheck, setInputValue, getInputValue, setDisabled, addListener}
+function setTextValue(id, text) {
+    const node = document.getElementById(id)
+
+    if (node) {
+        node.innerText = text;
+        return true;
+    }
+    return false;
+}
+
+module.exports = {removeDisabled, disabledCheck, setInputValue, getInputValue, setDisabled, addListener, setTextValue}
