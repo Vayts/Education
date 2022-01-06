@@ -1,0 +1,260 @@
+$main-color: #739875;
+$sub-color: #FFD700;
+$font: "Press Start 2P", cursive;
+
+@mixin button {
+  padding: 10px 30px;
+  background-color: $main-color;
+  color: $sub-color;
+  border: 2px solid $main-color;
+  font-size: 1.3rem;
+  font-family: $font;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ffffff;
+    color: $main-color;
+  }
+}
+
+@mixin section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+
+  &.disabled {
+    display: none;
+  }
+
+}
+
+html {
+  font-family: "Press Start 2P", cursive;
+  font-size: 14px;
+}
+
+body {
+  margin: 0;
+  background-color: #faffff;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  width: 800px;
+  background-color: #ffffff;
+  height: 350px;
+  box-shadow: 4px 4px 38px 0 rgba(34, 60, 80, 0.2);
+  border-radius: 30px;
+  position: relative;
+  padding: 20px;
+}
+
+.game-host {
+  position: absolute;
+  bottom: 100%;
+  display: flex;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &__dialog-window {
+    width: 450px;
+    height: 120px;
+    margin-left: 40px;
+    background-color: $main-color;
+    padding: 20px;
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $sub-color;
+    letter-spacing: 2px;
+
+    &:before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 20px 30px 20px 0;
+      border-color: transparent $main-color transparent transparent;
+      position: absolute;
+      right: 100%;
+      top:50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__dialog-text {
+    text-align: center;
+    line-height: 1.3;
+  }
+}
+
+.game-rules {
+  @include section;
+
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+  }
+
+  &__button {
+    @include button;
+    position: absolute;
+    bottom: 10%;
+
+  }
+}
+
+.rules-list {
+  list-style: none;
+  margin-bottom: 30px;
+
+  &__item {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+}
+
+.game-settings {
+  height: 100%;
+
+  &.disabled {
+    display: none;
+  }
+
+  &__form {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__label {
+    font-size: 1.2rem;
+
+  }
+
+  &__range {
+    margin-bottom: 30px;
+  }
+
+  &__attempt {
+    margin-bottom: 90px;
+
+
+  }
+
+  &__input {
+    border: none;
+    border-bottom: 2px solid $main-color;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    outline-color: $sub-color;
+    font-family: $font;
+    color: $sub-color;
+
+    &_orange {
+      color: #ceac40;
+    }
+
+  }
+
+  &__button {
+    @include button;
+    position: absolute;
+    bottom: 10%;
+  }
+}
+
+.game-try {
+  @include section;
+
+  &.disabled {
+    display: none;
+  }
+
+  &__title {
+    margin-top: -40px;
+    margin-bottom: 80px;
+    color: $main-color;
+    font-size: 2rem;
+  }
+
+  &__input {
+    border: none;
+    border-bottom: 2px solid $main-color;
+    font-size: 3rem;
+    outline: none;
+    text-align: center;
+    width: 180px;
+    font-family: $font;
+    color: $sub-color;
+  }
+
+  &__button {
+    @include button;
+    position: absolute;
+    bottom: 10%;
+  }
+}
+
+.game-end {
+  @include section;
+
+  &__button {
+    @include button;
+    position: absolute;
+    bottom: 10%;
+  }
+}
+
+.close-button-wrapper {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 5%;
+  right: 5%;
+  cursor: pointer;
+
+  &:hover {
+    &:before, &:after {
+      background-color: #000000;
+    }
+  }
+
+
+  &:before, &:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: #7e7d7d;
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
