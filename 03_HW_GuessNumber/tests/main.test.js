@@ -17,9 +17,6 @@ jest.mock('../src/homework/script/utils.js', () => {
     };
 });
 
-
-document.innerHTML = '<p class="game-end-text"></p>'
-
 describe('guess', () => {
     test('state with correct number', () => {
         expect(guess({
