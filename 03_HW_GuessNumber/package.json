@@ -14,7 +14,8 @@
   "scripts": {
     "cmd": "node_modules/.bin/gulp",
     "build": "yarn cmd default",
-    "watch": "yarn cmd watch"
+    "watch": "yarn cmd watch",
+    "test": "jest"
   },
   "devDependencies": {
     "@types/gulp": "^4.0.9"
