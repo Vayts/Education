@@ -1,3 +1,5 @@
+
+
 function setTextValue(id, value) {
     const node = document.getElementById(id)
     if (node) {
@@ -44,6 +46,31 @@ function toggleDisabledClass(id) {
     }
 }
 
+function settingsGame() {
+    toggleDisabledClass('rules', 'settings')
+    setTextValue('dialog-text','Давай определим условия нашей игры!');
+}
+
+function getSettings(state) {
+    const minInput = getInputValue('min-input')
+    const maxInput = getInputValue('max-input')
+    const attemptInput = getInputValue('attempt-input')
+
+    setSettings(state, +minInput, +maxInput, +attemptInput)
+}
 
 
-module.exports = {getInputValue, setTextValue, setInputValue, addListener, toggleDisabledClass}
+function startGame(state) {
+    toggleDisabledClass('settings','gameplay')
+    setTextValue('dialog-text','Проверим твою удачу!');
+    state.gameNumber = randomNumber(state.rangeMin, state.rangeMax)
+}
+
+
+function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+//removeIf(production)
+module.exports = {getInputValue, setTextValue, setInputValue, addListener, toggleDisabledClass, settingsGame, getSettings, startGame}
+//endRemoveIf(production)
+

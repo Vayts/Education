@@ -1,4 +1,4 @@
-const {checkNumber, validateInput, guess, setSettings} = require('../src/homework/script/main')
+const {checkNumber, validateInput, guess, setSettings, checkAttempt} = require('../src/homework/script/main')
 
 jest.mock('../src/homework/script/utils.js', () => {
     const originalModule = jest.requireActual('../src/homework/script/utils.js');
@@ -20,8 +20,8 @@ jest.mock('../src/homework/script/utils.js', () => {
 describe('guess', () => {
     test('state with correct number', () => {
         expect(guess({
-            gameNumber: 0,
-            userNumber: undefined,
+            gameNumber: 1,
+            userNumber: 1,
             gameAttempt: 12,
             userAttempt: 0,
             rangeMin: 0,
@@ -31,7 +31,7 @@ describe('guess', () => {
     test('state with uncorrect number', () => {
         expect(guess({
             gameNumber: 12,
-            userNumber: undefined,
+            userNumber: 1,
             gameAttempt: 12,
             userAttempt: 0,
             rangeMin: 0,
@@ -40,9 +40,9 @@ describe('guess', () => {
     })
     test('state with userAttempt>gameAttempt', () => {
         expect(guess({
-            gameNumber: 1,
+            gameNumber: 2,
             userNumber: undefined,
-            gameAttempt: 12,
+            gameAttempt: 1,
             userAttempt: 13,
             rangeMin: 0,
             rangeMax: 200
@@ -64,7 +64,7 @@ describe('gameSettingsCheck', () => {
     test('correct', () => {
         expect(setSettings({
             gameNumber: 12,
-            userNumber: undefined,
+            userNumber: 1,
             gameAttempt: 12,
             userAttempt: 0,
             rangeMin: 0,
@@ -76,23 +76,29 @@ describe('gameSettingsCheck', () => {
 
 
 describe('checkNumber', () => {
-    test('15,100', () => {
-        expect(checkNumber(15, 100)).toEqual('Холодно')
+    test('15,100,2', () => {
+        expect(checkNumber(15, 100,2)).toEqual('Холодно')
     })
-    test('0,100', () => {
-        expect(checkNumber(0, 100)).toEqual('Холодно')
+    test('0,100,3', () => {
+        expect(checkNumber(0, 100,3)).toEqual('Холодно')
     })
-    test('105,100', () => {
-        expect(checkNumber(105, 100)).toEqual('Тепло')
+    test('105,100,1', () => {
+        expect(checkNumber(105, 100,1)).toEqual('Тепло')
     })
-    test('"String",100', () => {
-        expect(checkNumber('string', 100)).toEqual('Я тебя не понимаю!')
+    test('"String",100,2', () => {
+        expect(checkNumber('string', 100,2)).toEqual('Я тебя не понимаю!')
     })
-    test('105, "String"', () => {
-        expect(checkNumber(105, 'String')).toEqual('Я тебя не понимаю!')
+    test('105, "String",3', () => {
+        expect(checkNumber(105, 'String',3)).toEqual('Я тебя не понимаю!')
     })
-    test('null, "String"', () => {
-        expect(checkNumber(null, 'String')).toEqual('Я тебя не понимаю!')
+    test('null, "String", 3', () => {
+        expect(checkNumber(null, 'String',3)).toEqual('Я тебя не понимаю!')
+    })
+    test('1, "12", 0', () => {
+        expect(checkNumber(1, 12,0)).toEqual('Не угадал!  В следующий раз я тебе подскажу')
+    })
+    test('1.2, "12", 0', () => {
+        expect(checkNumber(1.2, 12,0)).toEqual('Это не целое число')
     })
 })
 
@@ -129,6 +135,15 @@ describe('validateInput', () => {
     })
     test('10, 15, 6', () => {
         expect(validateInput(10, 15, 5)).toEqual(false)
+    })
+})
+
+describe('checkAttempt', () => {
+    test('12, 15', () => {
+        expect(checkAttempt(12,15)).toEqual(true)
+    })
+    test('12, 10', () => {
+        expect(checkAttempt(12,10)).toEqual(false)
     })
 })
 
