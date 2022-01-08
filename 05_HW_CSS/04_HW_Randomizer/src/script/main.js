@@ -1,4 +1,6 @@
+//removeIf(production)
 const {removeDisabled, disabledCheck, setInputValue, getInputValue, setDisabled, addListener, setTextValue} = require("../../dist/script/utils");
+//endRemoveIf(production)
 
 document.addEventListener('DOMContentLoaded', function(){
     initApp();
@@ -91,4 +93,6 @@ function random(min,max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+//removeIf(production)
 module.exports = {errorCheck, returnRandomNumber, resetApp, createArr}
+//endRemoveIf(production)
