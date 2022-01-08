@@ -78,6 +78,7 @@ function guess(state) {
         setTextValue('dialog-text', checkNumber(state.userNumber, state.gameNumber, state.userAttempt))
         state.userAttempt++
         checkAttempt(state.userAttempt, state.gameAttempt)
+        setInputValue('try-input', '')
         return false;
     }
 
@@ -87,9 +88,6 @@ function guess(state) {
         toggleDisabledClass('end', 'gameplay')
         return true;
     }
-
-    setInputValue('try-input', '')
-    return false;
 }
 
 function checkAttempt(userAttempt, gameAttempt) {
@@ -104,6 +102,11 @@ function checkAttempt(userAttempt, gameAttempt) {
 }
 
 function checkNumber(num, numberValue, attempt) {
+
+    if (num === 0) {
+        return 'Пустота или ноль меня не устраивают!'
+    }
+
     if (typeof num !== 'number' || typeof numberValue !== 'number') {
         return 'Я тебя не понимаю!'
     }

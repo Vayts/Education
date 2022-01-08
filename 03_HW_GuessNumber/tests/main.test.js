@@ -79,11 +79,14 @@ describe('checkNumber', () => {
     test('15,100,2', () => {
         expect(checkNumber(15, 100,2)).toEqual('Холодно')
     })
-    test('0,100,3', () => {
-        expect(checkNumber(0, 100,3)).toEqual('Холодно')
+    test('10,100,3', () => {
+        expect(checkNumber(10, 100,3)).toEqual('Холодно')
     })
     test('105,100,1', () => {
         expect(checkNumber(105, 100,1)).toEqual('Тепло')
+    })
+    test('0,100,2', () => {
+        expect(checkNumber(0, 100,2)).toEqual('Пустота или ноль меня не устраивают!')
     })
     test('"String",100,2', () => {
         expect(checkNumber('string', 100,2)).toEqual('Я тебя не понимаю!')
