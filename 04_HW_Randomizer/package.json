@@ -18,6 +18,8 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@types/gulp": "^4.0.9"
+    "@types/gulp": "^4.0.9",
+    "gulp-concat": "^2.6.1",
+    "gulp-remove-code": "^3.0.4"
   }
 }
