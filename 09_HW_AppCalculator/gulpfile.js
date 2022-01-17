@@ -12,18 +12,18 @@ gulp.task('clean', function(cb) {
 gulp.task('sass', function(cb) {
     gulp.src('./src/**/*.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('./dist'));
     cb();
 })
 
 gulp.task('copy:html', function (cb) {
-    gulp.src('./src/**/*.html')
-        .pipe(gulp.dest('./dist'))
+    gulp.src('./src/app/**/*.html')
+        .pipe(gulp.dest('./dist/app'))
     cb()
 })
 
 gulp.task('copy:js', function (cb) {
-    gulp.src('./src/**/*.js')
+    gulp.src('./src/app/**/*.js')
         .pipe(concat('main.js'))
         .pipe(removeCode({ production: true }))
         .pipe(gulp.dest('./dist/app/script'))
@@ -31,7 +31,7 @@ gulp.task('copy:js', function (cb) {
 })
 
 gulp.task('watch', function () {
-    gulp.watch(['./src/**/*.scss', './src/**/*.html', './src/**/*.js'], gulp.series(['clean', 'sass', 'copy:html', 'copy:js']));
+    gulp.watch(['./app/src/**/*.scss', './app/src/**/*.html', './app/src/**/*.js'], gulp.series(['clean', 'sass', 'copy:html', 'copy:js']));
 })
 
 gulp.task('default', gulp.series(['clean', 'sass', 'copy:html', 'copy:js']))
