@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  background-color: azure;
+}
+
+.canvas-holder {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .app {
+    box-shadow: 4px 1px 53px 6px rgba(34, 60, 80, 0.2);
+    background-color: #ffffff;
+  }
+}

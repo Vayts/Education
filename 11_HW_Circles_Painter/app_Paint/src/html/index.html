@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Painter</title>
+    <link rel="stylesheet" href="../style/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+<main>
+    <div class="container">
+        <div class="app-holder">
+            <div class="brush-settings">
+                <div class="brush-settings__col">
+                    <p class="brush-settings__title">Color:</p>
+                    <div class="brush-settings__color-holder">
+                        <input type="color" class="brush-settings__color" id="color" value="#000000">
+                    </div>
+                </div>
+                <div class="brush-settings__col">
+                    <p class="brush-settings__title">Brush size:</p>
+                    <div class="brush-settings__size-holder">
+                        <input type="range" class="brush-settings__size" min="1" max="50" value="5" id="size-range">
+                        <p class="brush-settings__range-value" id="range-value">5</p>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas-holder">
+                <canvas class="app" id="canvas" width="900px" height="700px"></canvas>
+            </div>
+            <div class="control-buttons">
+                <div class="control-buttons__save-button">
+                    <a href="#" class="control-buttons__button control-buttons__button__save" id="save" download="MyImg.json" type="button">Save</a>
+                </div>
+                <div class="control-buttons__clear-button">
+                    <button class="control-buttons__button control-buttons__button__clear" id="clear" type="button">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="../script/index.js"></script>
+</body>
+</html>
