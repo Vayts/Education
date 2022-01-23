@@ -49,8 +49,8 @@ class Circle {
                     const theta1 = findAngle(this.dx,this.dy)
                     const theta2 = findAngle(circle.dx, circle.dy)
                     const phi = Math.atan2(circle.y - this.y, circle.x - this.x);
-                    const mainSize = this.size;
-                    const subSize = circle.size;
+                    const mainSize = this.size * this.size * this.size;
+                    const subSize = circle.size * circle.size * circle.size;
                     const mainSpeed = findSpeed(this.dx,this.dy);
                     const subSpeed = findSpeed(circle.dx, circle.dy);
 
