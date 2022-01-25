@@ -10,53 +10,127 @@ const conn = mysql.createConnection({
 
 conn.connect(err => {
     if (err) {
-        console.log(err)
-        return err
-    }
-    else {
-        console.log('test')
+        return err;
     }
 })
+
+
+
 //TASK 1
 
-// let query = "SELECT COUNT(1) AS count FROM person"
+function allPerson() {
+    const query = "SELECT COUNT(1) AS count FROM person";
+    conn.query(query, (err, res) => {
+        if (!err) {
+            console.log(res);
+        }
+    })
+    conn.end()
+}
 
 //TASK 2
 
-// let query = "SELECT AVG(Age) AS averageAge FROM person"
+function averageAge() {
+    const query = "SELECT AVG(Age) AS averageAge FROM person";
+    conn.query(query, (err, res) => {
+        if (!err) {
+            console.log(res);
+        }
+    })
+}
 
 //TASK3
 
-// let query = "SELECT DISTINCT LastName FROM person ORDER BY LastName"
+function lastNameList() {
+    const query = "SELECT DISTINCT LastName FROM person ORDER BY LastName";
+    conn.query(query, (err, res) => {
+        if (!err) {
+            console.log(res);
+        }
+    })
+}
 
 //TASK4
 
-// let query = "SELECT LastName, COUNT(*) AS repeatCounter FROM person GROUP BY LastName"
+function lastNameCounter() {
+    const query = "SELECT LastName, COUNT(*) AS repeatCounter FROM person GROUP BY LastName"
+    conn.query(query, (err, res) => {
+        if (!err) {
+            console.log(res);
+        }
+    })
+}
+
+// lastNameCounter()
 
 //TASK5
 
+function findBInLastName() {
+    const query = "SELECT LastName FROM person WHERE LastName LIKE '%б%'"
+    conn.query(query, (err, res) => {
+        if (!err) {
+            console.log(res);
+        }
+    })
+}
+//
+
+
 //TASK 6
 
-// let query = "SELECT * FROM person WHERE id_Street is NULL"
+function homeless() {
+    const query = "SELECT * FROM person WHERE id_Street is NULL";
+    conn.query(query, (err, res) => {
+        if (!err) {
+            console.log(res);
+        }
+    })
+}
 
 //TASK 7
 
-// let query = "SELECT * FROM person INNER JOIN street ON person.id_Street = street.id WHERE Age < 18 AND name='Правды'"
+function youngPeopleOpPravdiStreet() {
+    const query = "SELECT * FROM person INNER JOIN street ON person.id_Street = street.id WHERE Age < 18 AND name='Правды'";
+    conn.query(query, (err, res) => {
+        if (!err) {
+            console.log(res);
+        }
+    })
+}
+
 
 //TASK 8
 
-// let query = "SELECT street.name, (SELECT COUNT(*) FROM person WHERE person.id_Street=street.id) AS residents FROM street ORDER BY street.name"
+function streetListCounter() {
+    const query = "SELECT street.name, (SELECT COUNT(*) FROM person WHERE person.id_Street=street.id) AS residents FROM street ORDER BY street.name";
+    conn.query(query, (err, res) => {
+        if (!err) {
+            console.log(res);
+        }
+    })
+}
 
 //TASK 9
 
-// let query = "SELECT * FROM street WHERE CHAR_LENGTH(name) = 6"
+function streetNameMoreThanSixLetters() {
+    const query = "SELECT * FROM street WHERE CHAR_LENGTH(name) = 6"
+    conn.query(query, (err, res) => {
+        if (!err) {
+            console.log(res);
+        }
+    })
+}
+
 
 //TASK 10
-// let query = "SELECT street.name, (SELECT COUNT(*) FROM person WHERE person.id_Street=street.id ) AS residents FROM street HAVING residents >= 3 ORDER BY street.name "
 
-conn.query(query, (err, res) => {
-    if (!err) {
-        // console.log(res[0])
-        console.log(res)
-    }
-})
+function streetsWithResidentsMoreThanThree() {
+    const query = "SELECT street.name, (SELECT COUNT(*) FROM person WHERE person.id_Street=street.id ) AS residents FROM street HAVING residents >= 3 ORDER BY street.name "
+    conn.query(query, (err, res) => {
+        if (!err) {
+            console.log(res);
+        }
+    })
+}
+
+
