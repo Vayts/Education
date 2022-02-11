@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Frog random</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <section class="container">
+            <div class="content">
+                <div class="game-host">
+                    <div class="game-host__img">
+                        <img src="img/frog.png" alt="">
+                    </div>
+                    <div class="game-host__dialog-window">
+                        <p id="dialog-text" class="game-host__dialog-text">Привет!</p>
+                    </div>
+                </div>
+                <div class="game-rules" id="rules">
+                    <h4 class="game-rules__title">Правила</h4>
+                    <ul class="rules-list">
+                        <li class="rules-list__item">Диапазон чисел ты выбираешь сам</li>
+                        <li class="rules-list__item">Минимум: 0, а максимум: 200</li>
+                        <li class="rules-list__item">Попыток должно быть меньше, чем чисел в диапазоне</li>
+                        <li class="rules-list__item">Не больше 15 попыток</li>
+                    </ul>
+                    <button class="game-rules__button" id="game-rules-button"  type="button">Начать</button>
+                </div>
+                <div class="game-settings disabled" id="settings">
+                    <form class="game-settings__form">
+                        <div class="game-settings__range">
+                            <label class="game-settings__label">
+                                Я загадаю число от
+                                <input class="game-settings__input" min="1" max="199" type="number" id="min-input" value="1">
+                            </label>
+                            <label class="game-settings__label">
+                                до
+                                <input class="game-settings__input game-settings__input_orange" id="max-input"  min="2" max="200" type="number"  value="200">
+                            </label>
+                        </div>
+                        <div class="game-settings__attempt">
+                            <label class="game-settings__label">
+                                У тебя будет
+                                <input class="game-settings__input" id="attempt-input" min="1" max="15" type="number" value="7">
+                                попыток
+                            </label>
+                        </div>
+                        <button id="game-start-button" class="game-settings__button" type="button">Испытать удачу</button>
+                    </form>
+                </div>
+                <div class="game-try disabled" id="gameplay">
+                    <h4 class="game-try__title">Твоё число:</h4>
+                    <label><input id="try-input" class="game-try__input" type="number"></label>
+                    <button id="game-try-button" class="game-try__button">Попробовать</button>
+                </div>
+                <div class="game-end disabled" id="end">
+                    <p class="game-end__text" id="game-end-text"></p>
+                    <button class="game-end__button" id="game-end-button">Снова</button>
+                </div>
+                <div class="close-button-wrapper" id="game-close-button"></div>
+            </div>
+        </section>
+    </main>
+    <script src="script/main.js"></script>
+</body>
+</html>
