@@ -42,6 +42,16 @@ body {
   font-weight: 300;
   //user-select: none;
   margin-bottom: 40px;
+
+  &__text {
+    max-width: 440px;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
 }
 
 .buttons {
