@@ -139,10 +139,9 @@ gulp.task('fileInclude', (cb) => {
     cb();
 });
 
-gulp.task('build', gulp.series('clean', gulp.parallel('scripts', 'fileInclude')));
+gulp.task('build', gulp.series('clean', gulp.parallel('scripts')));
 
 gulp.task('watch', () => {
-    gulp.watch(paths.compileWatch.html, gulp.series('fileInclude'));
     // gulp.watch(paths.compileWatch.scss, gulp.series('styles'));
     gulp.watch(paths.compileWatch.ts, gulp.series('scripts'));
     // gulp.watch(paths.compileWatch.img, gulp.series('img'));

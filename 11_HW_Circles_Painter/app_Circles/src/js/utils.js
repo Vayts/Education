@@ -18,11 +18,15 @@ function getElement(id) {
 }
 
 function getContext(id) {
-    const context = document.getElementById(id).getContext('2d');
+    const node = document.getElementById(id);
 
-    if (context) {
-        return context;
+    if (node) {
+        return node.getContext('2d')
     }
     return false;
 
 }
+
+//removeIf(production)
+module.exports = {getElement, addListener, getContext}
+//endRemoveIf(production)

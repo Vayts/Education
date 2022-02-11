@@ -4,28 +4,28 @@ const {getElement, getContext} = require('../js/utils')
 
 class Brush {
 
-    constructor(size, color) {
+    constructor(ctx,size, color) {
         this.size = size;
         this.color = color;
+        this.ctx = ctx;
     }
 
     draw(event, x, y) {
-        const ctx = getContext('canvas')
         const dx = event.movementX;
         const dy = event.movementY;
 
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-        ctx.lineTo(x - dx, y - dy);
-        ctx.lineCap = "round"
-        ctx.lineWidth = this.size;
-        ctx.strokeStyle = this.color;
-        ctx.stroke();
-        ctx.closePath();
+        this.ctx.beginPath();
+        this.ctx.moveTo(x, y);
+        this.ctx.lineTo(x - dx, y - dy);
+        this.ctx.lineCap = "round"
+        this.ctx.lineWidth = this.size;
+        this.ctx.strokeStyle = this.color;
+        this.ctx.stroke();
+        this.ctx.closePath();
+        return true;
     }
 
     changeSize(newSize) {
-        console.log(typeof newSize)
         if (typeof newSize === 'number') {
             this.size = newSize;
             return true;

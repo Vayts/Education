@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <script>
+    window.exports = {}
+  </script>
+</head>
+<body>
+<main>
+  <div class="container">
+    <div class="app-holder">
+      <div class="app">
+        <div class="app__control">
+          <h2 class="app__title">Control panel</h2>
+          <div class="inputs">
+            <div class="inputs__holder">
+              <label class="inputs__label">
+                Name:
+                <input type="text" class="inputs__input" id="input-name">
+              </label>
+              <button type="button" class="inputs__button" id="button-name">Generate</button>
+            </div>
+            <div class="inputs__holder">
+              <label class="inputs__label">
+                Balance:
+                <input type="number" class="inputs__input" id="input-balance">
+              </label>
+              <button type="button" class="inputs__button" id="button-balance">Generate</button>
+            </div>
+            <div class="inputs__holder">
+              <label class="inputs__label">
+                Age:
+                <input type="number" class="inputs__input" id="input-age">
+              </label>
+              <button type="button" class="inputs__button" id="button-age">Generate</button>
+            </div>
+            <div class="inputs__holder">
+              <label class="inputs__label">
+                Document:
+                <input type="text" class="inputs__input" id="input-document">
+              </label>
+              <button type="button" class="inputs__button" id="button-document">Generate</button>
+            </div>
+            <div class="inputs__holder">
+              <label class="inputs__label">
+                English level:
+                <input type="text" class="inputs__input" id="input-english">
+              </label>
+              <button type="button" class="inputs__button" id="button-english">Generate</button>
+            </div>
+          </div>
+          <div class="buttons">
+            <div class="buttons">
+              <button type="button" class="buttons__button" id="button-generate-all">Generate all</button>
+              <button type="button" class="buttons__button" id="button-add-candidate">Add candidate</button>
+              <button type="button" class="buttons__button" id="button-init">Init</button>
+              <button type="button" class="buttons__button" id="button-race" disabled>Race</button>
+              <button type="button" class="buttons__button" id="button-clear">Clear</button>
+            </div>
+          </div>
+          <div class="candidates">
+            <h2 class="candidates__title">List</h2>
+            <ul class="candidates__list" id="list">
+            </ul>
+          </div>
+        </div>
+        <div class="app__visual">
+          <canvas width="600px" height="380px" class="canvas" id="canvas"></canvas>
+          <p class="app__result" id="result">Visa center will close soon!!!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

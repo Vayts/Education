@@ -3,13 +3,13 @@ body {
   background-color: azure;
 }
 
-.canvas-holder {
+.app {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  .app {
+  &__canvas {
     box-shadow: 4px 1px 53px 6px rgba(34, 60, 80, 0.2);
     background-color: #ffffff;
   }

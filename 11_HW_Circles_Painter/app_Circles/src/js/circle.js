@@ -1,45 +1,64 @@
 class Circle {
-    constructor(x,y, size, color, xMoveDirection, yMoveDirection) {
+    constructor(x,y, size, color, xMoveDirection, yMoveDirection, ctx, canvas) {
         this.x = x;
         this.y = y;
         this.size = size;
         this.color = `rgb(${color})`;
         this.dx = xMoveDirection;
         this.dy = yMoveDirection;
+        this.ctx = ctx;
+        this.canvas = canvas;
+    }
+
+    draw() {
+        this.ctx.beginPath()
+        this.ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+        this.ctx.fillStyle = this.color
+        this.ctx.fill()
+        this.ctx.closePath()
+        return true;
     }
 
     move() {
         this.x += this.dx
         this.y += this.dy
+        return [this.x,this.y]
     }
 
     direction() {
-        const canvas = getElement('canvas')
 
-        if (this.x - this.size + this.dx < 0 || this.x + this.size + this.dx > canvas.width) {
-            this.dx *= -1
+        if (this.x - this.size + this.dx < 0 || this.x + this.size + this.dx > this.canvas.width) {
+            this.dx *= -1;
+            return 'X-Rebound'
         }
-        if (this.y - this.size + this.dy < 0 || this.y + this.size + this.dy > canvas.height) {
-            this.dy *= -1
+        if (this.y - this.size + this.dy < 0 || this.y + this.size + this.dy > this.canvas.height) {
+            this.dy *= -1;
+            return 'Y-Rebound'
         }
-        if (this.y + this.size > canvas.height) {
-            this.y = canvas.height - this.size;
+        if (this.y + this.size > this.canvas.height) {
+            this.y = this.canvas.height - this.size;
+            return 'Y-Bottom'
         }
         if (this.y - this.size < 0) {
-            this.y = this.size
+            this.y = this.size;
+            return 'Y-Top'
         }
-        if (this.x + this.size > canvas.width) {
-            this.x = canvas.width - this.size
+        if (this.x + this.size > this.canvas.width) {
+            this.x = this.canvas.width - this.size;
+            return 'X-Right'
         }
         if (this.x - this.size < 0) {
-            this.x = this.size
+            this.x = this.size;
+            return 'X-Left'
         }
+
+        return true;
     }
 
     collision(state,ball) {
         for (let i = 0; i < state.circle.length; i++) {
-            const circle = state.circle[i]
-            const dist = findDistance(this, circle)
+            const circle = state.circle[i];
+            const dist = findDistance(this, circle);
 
             if (i !== ball) {
                 if (dist < this.size + circle.size) {
@@ -64,17 +83,19 @@ class Circle {
                     circle.dx = dx2F;
                     circle.dy = dy2F;
 
-                    staticCollision(this, circle)
+                    staticCollision(this, circle);
+                    return true;
                 }
 
             }
 
         }
+        return false;
     }
 }
 
-function addCircle(state) {
-    state.circle.push(new Circle(getX(event), getY(event), getSize(), getColor(), getSpeed(), getSpeed()))
+function addCircle(state, ctx, canvas) {
+    state.circle.push(new Circle(getX(event), getY(event), getSize(), getColor(), getSpeed(), getSpeed(), ctx, canvas))
 }
 
 function staticCollision(ob1, ob2, emergency=false)  {
@@ -84,7 +105,7 @@ function staticCollision(ob1, ob2, emergency=false)  {
     let biggerObject = ob1.size > ob2.size ? ob1 : ob2;
 
     if (emergency) {
-        [smallerObject, biggerObject] = [biggerObject, smallerObject]
+        [smallerObject, biggerObject] = [biggerObject, smallerObject];
     }
 
     let theta = Math.atan2((biggerObject.y - smallerObject.y), (biggerObject.x - smallerObject.x));
@@ -92,21 +113,23 @@ function staticCollision(ob1, ob2, emergency=false)  {
     smallerObject.y -= overlap * Math.sin(theta);
 
     if (findDistance(ob1, ob2) < ob1.size + ob2.size) {
-        if (!emergency) staticCollision(ob1, ob2, true)
+        if (!emergency) staticCollision(ob1, ob2, true);
+        return true;
     }
+    return false;
 }
 
 
 function getX(event) {
-    return  event.clientX - getElement('canvas').offsetLeft
+    return event.clientX - getElement('canvas').offsetLeft;
 }
 
 function getY(event) {
-    return  event.clientY - getElement('canvas').offsetTop
+    return event.clientY - getElement('canvas').offsetTop;
 }
 
 function getSize() {
-    return  Math.floor(Math.random() * (50 - 10 + 1) ) + 10;
+    return Math.floor(Math.random() * (50 - 10 + 1) ) + 10;
 }
 
 function getColor() {
@@ -121,19 +144,6 @@ function getSpeed() {
     return Math.floor(Math.random() * (10 - 5 + 1) ) + 5;
 }
 
-function getMove() {
-    const random = Math.floor(Math.random() * (50 - 1 + 1) ) + 1;
-    if (random >= 25) {
-        console.log('aaa')
-        return 'minus'
-    }
-    return 'plus'
-}
-
-function collisionHit(mainSize, subSize, mainSpeed, subSpeed, phi, angleFirst, angleSecond) {
-    return (mainSpeed * Math.cos(angleFirst - phi) * (mainSize-subSize) + 2*subSize*subSpeed*Math.cos(angleSecond - phi)) / (mainSize+subSize) * Math.cos(phi) + mainSpeed*Math.sin(angleFirst-phi) * Math.cos(phi+Math.PI/2)
-}
-
 function findDistance(a, b) {
     return Math.sqrt((a.x - b.x)**2 + (a.y - b.y)**2);
 }
@@ -145,3 +155,7 @@ function findSpeed(dx,dy) {
 function findAngle(dx,dy) {
     return Math.atan2(dx, dy);
 }
+
+//removeIf(production)
+module.exports = {getSpeed, findSpeed,getY,getX,addCircle,findAngle,getColor,getSize, Circle, staticCollision, findDistance}
+//endRemoveIf(production)

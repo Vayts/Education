@@ -1,0 +1,162 @@
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #f5f5f5;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.app-holder {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app__enctype {
+  text-align: center;
+}
+
+.app {
+  width: 800px;
+  height: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
+
+  &__title {
+    font-size: 25px;
+    font-weight: 200;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  &-output {
+    height: 60px;
+
+    &__message {
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    &__links {
+      display: flex;
+      justify-content: center;
+
+      a {
+        margin: 0 10px;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+
+.app-form {
+  width: 400px;
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    border-radius: 5px;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #a2a2a2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: #a2a2a2;
+    cursor: pointer;
+
+    &[disabled] {
+      border-color: #c2c2c2;
+      color: #c2c2c2;
+    }
+
+    &:hover {
+      transition: all 0.3s;
+      border-color: #000000;
+      color: #000000;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    height: 40px;
+    background-color: #ec6d6d;
+    border: 1px solid #ec6d6d;
+    text-transform: uppercase;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 40px;
+
+    &:hover {
+      background-color: #ce5656;
+      border-color: #ce5656;
+    }
+
+    &[disabled] {
+      background-color: #5b5b5b;
+      border-color: #5b5b5b;
+      color: #333333;
+      cursor: default;
+    }
+  }
+}
+
+.app-list {
+  width: 250px;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+
+  &__item {
+    padding: 3px 10px;
+    display: inline-block;
+    //background: linear-gradient(45deg, rgb(31, 56, 72), rgb(26, 89, 22));
+    background-color: #ec6d6d;
+    color: #000000;
+    margin: 5px 5px;
+    border-radius: 8px;
+    position: relative;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ce5656;
+    }
+
+    &--active {
+      background-color: #acef86;
+
+      &:hover {
+        background-color: #75a857;
+      }
+    }
+  }
+}

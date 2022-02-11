@@ -1,0 +1,25 @@
+@mixin button {
+  background-color: #aec9a2;
+  color: #484646;
+  font-weight: 300;
+  padding: 10px 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 10px;
+  border: none;
+
+  &:hover {
+    background-color: #8da282;
+  }
+
+  &[disabled] {
+    background-color: #484646 !important;
+    color: #7c7c7c;
+
+    &:hover {
+      cursor: default;
+    }
+  }
+}

@@ -7,8 +7,7 @@ jest.mock('../js/utils.js', () => {
     return {
         __esModule: true,
         ...originalModule,
-        // alertCall: jest.fn(),
-        // attemptsPlus: jest.fn(),
+
         addListener: jest.fn(() => true),
         getListener: jest.fn(() => true),
         getInputValue: jest.fn(() => true),
@@ -16,19 +15,40 @@ jest.mock('../js/utils.js', () => {
     };
 });
 
-let canvas;
-
-beforeEach(() => {
-    canvas = document.createElement('canvas');
+jest.mock('../js/brush.js', () => {
+    const originalModule = jest.requireActual('../js/brush.js');
+    return {
+        __esModule: true,
+        ...originalModule,
+        setTextValue: jest.fn(() => true),
+    };
 });
 
+const ctx = {
+    beginPath: ()=>{},
+    moveTo: ()=>{},
+    lineTo: ()=>{},
+    lineCap: '',
+    lineWidth: 10,
+    strokeStyle: '#ff0000',
+    stroke: ()=> {},
+    closePath: () => {}
+}
+
 describe('brush.changeSize', () => {
-    const testBrush = new Brush(10, '#ff0000')
+    const testBrush = new Brush(ctx,10, '#ff0000')
     test('should return true', () => {
         expect(testBrush.changeSize(10)).toBe(true)
     })
     test('should return false', () => {
-        expect(testBrush.changeSize('aaaa')).toBe(false)
+        expect(testBrush.changeSize('test')).toBe(false)
+    })
+})
+
+describe('brush.draw', () => {
+    const testBrush = new Brush(ctx,10, '#ff0000')
+    test('should return true', () => {
+        expect(testBrush.draw({movementX: 3, movementY: 4}, 4, 4)).toBe(true)
     })
 })
 

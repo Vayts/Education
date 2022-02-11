@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "target": "es2020",
+        "sourceMap": true,
+        "typeRoots": ["node_modules/@types"],
+        "types": ["@types/jest", "node"]
+    },
+    "noEmit": true,
+    "lib": ["ES2019"],
+    "include": ["./src/ts/**/*.ts", "./test/**/*.ts"],
+    "exclude": [
+        "node_modules"
+    ]
+}

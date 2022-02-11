@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AWS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <div class="container">
+      <div class="app-holder">
+        <div class="app">
+          <div class="app__form-holder">
+            <p class="app__title">Upload file</p>
+            <form class="app-form">
+              <input type="file" id="load-file" name="file" class="app-form__input">
+              <label id="input-label" for="load-file" class="app-form__label">&#129095;</label>
+              <button type="button" id="send-file" class="app-form__button" disabled>Send</button>
+            </form>
+            <p class="app__title">Response:</p>
+            <div class="app-output">
+              <p id="file-message" class="app-output__message"></p>
+              <div id="img-link" class="app-output__links">
+              </div>
+            </div>
+          </div>
+          <div class="app-enctype">
+              <p class="app__title">Allowed file formats:</p>
+              <ul class="app-list">
+                <li class="app-list__item" data-value="aac">.aac</li>
+                <li class="app-list__item" data-value="bin">.bin</li>
+                <li class="app-list__item" data-value="bmp">.bmp</li>
+                <li class="app-list__item" data-value="css">.css</li>
+                <li class="app-list__item" data-value="csv">.csv</li>
+                <li class="app-list__item" data-value="doc">.doc</li>
+                <li class="app-list__item" data-value="eot">.eot</li>
+                <li class="app-list__item" data-value="epub">.epub</li>
+                <li class="app-list__item" data-value="gif">.gif</li>
+                <li class="app-list__item" data-value="html">.html</li>
+                <li class="app-list__item" data-value="ico">.ico</li>
+                <li class="app-list__item" data-value="json">.json</li>
+                <li class="app-list__item" data-value="mp3">.mp3</li>
+                <li class="app-list__item" data-value="mp4">.mp4</li>
+                <li class="app-list__item" data-value="mpeg">.mpeg</li>
+                <li class="app-list__item" data-value="php">.php</li>
+                <li class="app-list__item" data-value="png">.png</li>
+                <li class="app-list__item" data-value="ppt">.ppt</li>
+                <li class="app-list__item" data-value="svg">.svg</li>
+                <li class="app-list__item" data-value="rar">.rar</li>
+                <li class="app-list__item" data-value="txt">.txt</li>
+                <li class="app-list__item" data-value="webm">.webm</li>
+                <li class="app-list__item" data-value="woff">.woff</li>
+                <li class="app-list__item" data-value="woff2">.woff2</li>
+                <li class="app-list__item" data-value="zip">.zip</li>
+                <li class="app-list__item" data-value="7z">.7z</li>
+                <li class="app-list__item" data-value="xhtml">.xhtml</li>
+                <li class="app-list__item" data-value="jpg">.jpg</li>
+                <li class="app-list__item" data-value="jpeg">.jpeg</li>
+                <li class="app-list__item" data-value="js">.js</li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

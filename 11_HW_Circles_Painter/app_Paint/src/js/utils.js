@@ -3,7 +3,9 @@ function addListener(id, eventType, cb) {
 
     if (node) {
         node.addEventListener(eventType, cb)
+        return true;
     }
+    return false;
 }
 
 function getElement(id) {

@@ -1,0 +1,154 @@
+@import "mixin";
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #F0FFFFFF;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.app-holder {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.app {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 4px 4px 21px 6px rgba(34, 60, 80, 0.2);
+  background-color: #ffffff;
+  padding: 30px;
+  height: 750px;
+
+  &__title {
+    text-align: center;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  &__control {
+    width: 420px;
+  }
+}
+
+.inputs {
+  width: 100%;
+  &__holder {
+    text-align: right;
+    margin-bottom: 10px;
+  }
+
+  &__label {
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+  &__input {
+    margin: 0 10px;
+    height: 35px;
+    border-radius: 10px;
+    background-color: #c6e3bf;
+    border: none;
+    padding-left: 5px;
+  }
+
+  &__button {
+    @include button;
+  }
+
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+
+  &__button {
+    @include button;
+    margin-bottom: 5px;
+
+    &:first-child {
+      background-color: #c8e58c;
+      &:hover {
+        background-color: #adc776;
+      }
+    }
+    &:nth-child(2) {
+      background-color: #efe097;
+      &:hover {
+        background-color: #d2c47d;
+      }
+    }
+    &:nth-child(3) {
+      background-color: #73a3bd;
+      &:hover {
+        background-color: #5a8ba4;
+      }
+    }
+    &:nth-child(4) {
+      background-color: #bbbd73;
+      &:hover {
+        background-color: #9b9d5b;
+      }
+    }
+    &:last-child {
+      background-color: #ea8787;
+      &:hover {
+        background-color: #c96969;
+      }
+    }
+  }
+
+}
+
+.candidates {
+  &__title {
+    font-weight: 300;
+    text-align: center;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+
+    li {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.app__visual {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.canvas {
+  box-shadow: 4px 4px 21px 6px rgba(34, 60, 80, 0.1);
+  border-radius: 4px;
+  margin-bottom: 50px;
+}
+
+.app__result {
+  font-size: 30px;
+  font-weight: 300;
+  text-transform: uppercase;
+}

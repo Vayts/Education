@@ -20,23 +20,25 @@ function getTextValue(id) {
     const node = document.getElementById(id)
 
     if (node) {
-        return node.textContent
+        return node.textContent;
     }
-    return false
+    return false;
 }
 
 function clearState(state) {
-    state.previous = ''
+    if (state) {
+        state.previous = '';
+        return state;
+    }
+    return false;
 }
 
 function errorCheck(string) {
     if (['+', '-', '/', '*'].includes(string[string.length - 1])) {
-        return true
+        return true;
     }
-    return false
+    return false;
 }
-
-
 
 function setValue(state) {
     checkInputValue(event.target.value, state)
