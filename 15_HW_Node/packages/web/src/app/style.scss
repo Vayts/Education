@@ -50,11 +50,13 @@ body {
     height: 60px;
 
     &__message {
-      height: 30px;
+      max-width: 400px;
+      height: 50px;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
+      overflow-x: hidden;
     }
 
     &__links {
@@ -138,7 +140,6 @@ body {
   &__item {
     padding: 3px 10px;
     display: inline-block;
-    //background: linear-gradient(45deg, rgb(31, 56, 72), rgb(26, 89, 22));
     background-color: #ec6d6d;
     color: #000000;
     margin: 5px 5px;
