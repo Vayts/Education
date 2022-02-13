@@ -1,5 +1,4 @@
-//removeIf(production)
-const {errorCheck, setTextContent, addTextContent, clearState, getTextValue} = require('../app/script/utils.js')
+const {errorCheck, setTextContent, addTextContent, clearState, getTextValue, addListener} = require('../app/script/utils.js')
 
 describe('addTextContent', () => {
     test('should return false',() => {
@@ -52,3 +51,13 @@ describe('errorCheck', () => {
     })
 })
 
+describe('addListener', () => {
+    test('should return true',() => {
+        document.body.innerHTML = '<p id="test-p"></p>'
+        expect(addListener('test-p', 'click', () => {})).toBe(true)
+    })
+    test('should return false',() => {
+        document.body.innerHTML = '<p id="test-p-false"></p>'
+        expect(addListener('test-p', 'click', () => {})).toBe(false)
+    })
+})

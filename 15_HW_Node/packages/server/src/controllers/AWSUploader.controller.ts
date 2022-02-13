@@ -28,7 +28,6 @@ export class AWSUploader {
 
           this.s3.putObject(params, (err: AWSError) => {
             if (err) {
-              console.log(err);
               reject();
             } else {
               resolve(200);

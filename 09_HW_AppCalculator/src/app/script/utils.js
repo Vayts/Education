@@ -1,7 +1,21 @@
+//removeIf(production)
+const {checkInputValue} = require("./main");
+//endRemoveIf(production)
+
 function setTextContent(id, value) {
     const node = document.getElementById(id)
     if (node) {
         node.innerText = value;
+        return true;
+    }
+    return false;
+}
+
+function addListener(id, eventType, cb) {
+    const node = document.getElementById(id);
+
+    if (node) {
+        node.addEventListener(eventType, cb);
         return true;
     }
     return false;
@@ -41,9 +55,14 @@ function errorCheck(string) {
 }
 
 function setValue(state) {
-    checkInputValue(event.target.value, state)
+    const target = event.target.closest('button')
+    if (target) {
+        checkInputValue(target.dataset.value, state)
+        return true;
+    }
+    return false;
 }
 
 //removeIf(production)
-module.exports = {errorCheck, setTextContent, addTextContent, clearState, setValue, getTextValue}
+module.exports = {errorCheck, setTextContent, addTextContent, clearState, setValue, getTextValue, addListener}
 //endRemoveIf(production)

@@ -30,8 +30,10 @@ jest.mock('../app/script/utils.js', () => {
         setTextContent: jest.fn(() => true),
         addTextContent: jest.fn(() => true),
         errorCheck: jest.fn(() => false),
-        setValue: jest.fn(),
-        getTextValue: jest.fn(() => '')
+        setValue: jest.fn(()=> true),
+        getTextValue: jest.fn(() => ''),
+        clearState: jest.fn(()=> true),
+        addListener: jest.fn(() => true)
     };
 });
 
@@ -40,7 +42,7 @@ describe('checkInputValue', () => {
         expect(checkInputValue('1', {})).toBe('Digits')
     })
     test('+', () => {
-        expect(checkInputValue('+', {})).toBe('Digits')
+        expect(checkInputValue('+', {})).toBe('+')
     })
     test('=', () => {
         expect(checkInputValue('=', {})).toBe('Result')
