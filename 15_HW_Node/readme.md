@@ -1,6 +1,4 @@
-https://node15.herokuapp.com/
-https://node15.herokuapp.com/
-https://node15.herokuapp.com/
+DEMO: https://node15.herokuapp.com/
 
 Используя Node.js, разработать сервис, принимающий файлы по протоколу
 HTTP и загружающий в AWS S3. В случае, если принимаемый файл является
