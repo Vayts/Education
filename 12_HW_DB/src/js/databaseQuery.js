@@ -38,7 +38,7 @@ function getLastNameCounter(db) {
 }
 
 function findByLetterInLastName(db) {
-    db.each('SELECT LastName FROM person WHERE LastName LIKE \'%б%\'', (err, res) => {
+    db.each('SELECT LastName FROM person WHERE LastName LIKE "%б%"', (err, res) => {
         if(err) {
             console.log('База данных ещё не заполнилась! Повторите попытку!');
             return false;
